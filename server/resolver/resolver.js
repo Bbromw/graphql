@@ -7,13 +7,13 @@ const axios = require('axios')
 const resolver = {
   // Query
   Query: {
-    books: async (parent, args, { mongoDataMethods }) =>
-      await mongoDataMethods.getAllBooks(),
-    authors: async (parent, args, { mongoDataMethods }) =>
-      await mongoDataMethods.getAllAuthors(),
-    book: async (parent, { id }, { mongoDataMethods }) =>
-      await mongoDataMethods.getBookById(id),
-    Search: async (parent, args) => {
+    // books: async (parent, args, { mongoDataMethods }) =>
+    //   await mongoDataMethods.getAllBooks(),
+    // authors: async (parent, args, { mongoDataMethods }) =>
+    //   await mongoDataMethods.getAllAuthors(),
+    // book: async (parent, { id }, { mongoDataMethods }) =>
+    //   await mongoDataMethods.getBookById(id),
+    Movies: async (parent, args) => {
       try {
         const response = await axios.get("https://www.omdbapi.com/?&apikey=54e0bf78&s=robot&type=movie")
         return response.data.Search
@@ -23,14 +23,14 @@ const resolver = {
       }
     }
   },
-  Book: {
-    author: async ({ authorId }, agrs, { mongoDataMethods }) =>
-      await mongoDataMethods.getAuthorById(authorId),
-  },
-  Author: {
-    books: async ({ id }, args, { mongoDataMethods }) =>
-      await mongoDataMethods.getAllBooks({ authorId: id }),
-  },
+  // Book: {
+  //   author: async ({ authorId }, agrs, { mongoDataMethods }) =>
+  //     await mongoDataMethods.getAuthorById(authorId),
+  // },
+  // Author: {
+  //   books: async ({ id }, args, { mongoDataMethods }) =>
+  //     await mongoDataMethods.getAllBooks({ authorId: id }),
+  // },
   Movie: {
     info: async ({ imdbID }, args) => {
       try {
@@ -42,14 +42,14 @@ const resolver = {
       }
     }
   },
-  Mutation: {
-    createBook: async (parent, args, { mongoDataMethods }) => {
-      return await mongoDataMethods.createBook(args)
-    },
-    createAuthor: async (parent, args, { mongoDataMethods }) => {
-      return await mongoDataMethods.createAuthor(args)
-    },
-  },
+  // Mutation: {
+  //   createBook: async (parent, args, { mongoDataMethods }) => {
+  //     return await mongoDataMethods.createBook(args)
+  //   },
+  //   createAuthor: async (parent, args, { mongoDataMethods }) => {
+  //     return await mongoDataMethods.createAuthor(args)
+  //   },
+  // },
   // Query: {
   //   books: async (parent, args, { mongoDataMethods }) => {
   //     return await mongoDataMethods.getAllBooks();

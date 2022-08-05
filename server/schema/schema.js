@@ -52,6 +52,7 @@ const typeDefs = gql`
   }
 
   type Infor {
+    Title: String
     Year: String
     Released: String
     Runtime: String
@@ -62,7 +63,7 @@ const typeDefs = gql`
     books: [Book]
     authors: [Author]
     book(id: ID): Book
-    Search: [Movie]
+    Movies: [Movie]
   }
 
 
